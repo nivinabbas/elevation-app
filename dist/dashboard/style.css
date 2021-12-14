@@ -39,21 +39,21 @@ body {
   background: rgba(255, 255, 255, 0.2);
 } */
 .ulList li span:nth-child(1) {
-  width: 30px;
+  width: 100px;
 }
 .ulList li span:nth-child(2) {
   width: 200px;
 }
 .ulList li span:nth-child(3) {
   width: 100px;
-  text-align: right;
 }
 .ulList li span:nth-child(4) {
-  width: 70px;
+  width: 200px;
   text-align: right;
 }
 .ulList li:hover {
   transform: scale(1.06);
   background: #ff3772;
+  cursor: pointer;
 }
 /**********************************************/
