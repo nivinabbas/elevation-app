@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+    
     <title>Dashboard</title>
   </head>
   <body>
@@ -31,24 +32,49 @@
       </div>
     </div>
 
-    <div class="listDiv">
-      <ul class="ulList">
-        <li>
-          <span class="name">Ameer Jmal</span>
-          <span class="detailsClass">311549821 </span>
-          <span class="statusClass">HR INTERVIEW</span>
-        </li>
-        <li>
-          <span class="name">Ameer Jmal</span>
-          <span class="detailsClass">311549821 </span>
-          <span class="statusClass">Phone INTERVIEW</span>
-        </li>
-      </ul>
+    
+    <div id="students">
     </div>
 
+    <script id="student-template" type="text/x-handlebars">
+        {{#each students}}
+
+        <div class = "student">
+
+            <div class = "name">
+                <h3>{{name}}</h3>
+            </div>
+
+            <div class="proc-st">
+
+                <div class="process">
+                    <span>In {{processNum}} process : </span> 
+                    {{#each process}}
+                        <div>{{jobTittle}}    -   {{status}}</div>
+                    {{/each}}
+                </div>
+
+                <div class= "status">
+                    <p>Status : </p>
+                     <h6>  {{status}}</h6>
+                </div>
+                    
+            </div>
+
+        </div>
+        {{/each}}
+    </script>
+
+
+    
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
     <script src="Card/card.js"></script>
     <script src="../dashboard/Table/table.js"></script>
+    <script src="./Table/Model.js"></script>
+    <script src="./Table/View.js"></script>
+    <script src="./Table/Controller.js"></script>
     <script src="main.js"></script>
   </body>
 </html>
