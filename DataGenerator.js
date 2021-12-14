@@ -236,6 +236,7 @@ const createJobsAndProcesses = async () => {
         await process.save()
 
         await Job.findByIdAndUpdate(job.id, {$push: {recruitmentProcesses: process}}).exec()
+        await Student.findByIdAndUpdate(student.id, {$push: {recruitmentProcesses: process}}).exec()
     }
         
 

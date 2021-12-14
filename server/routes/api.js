@@ -14,4 +14,20 @@ router.get('/dataOfCards', (req, res) => {
     studentsDetails().then(data => res.send(data))
 })
 
+
+router.get('/studentsDetails',  async (req, res) => {
+
+    const filter = {}
+    if(req.query.email)
+        filter.email = req.query.email
+    if(req.query.currentStatus)
+        filter.currentStatus = req.query.currentStatus
+    if(req.query.name)
+        filter.name = {$regex: req.query.name, $options: 'i'}
+    const students = await Student.find(filter, 'name email currentStatus recruitmentProcesses')
+    .populate({path: 'recruitmentProcesses', 
+    select: '-appliedStudent', populate: {path: 'job', select: 'company title -_id'}}).exec()
+    res.send(students)
+})
+
 module.exports = router
