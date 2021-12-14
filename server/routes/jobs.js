@@ -27,11 +27,15 @@ router.post('/add', async (req, res) => {
         await job.save()
     }
     else
-        job = Job.findById(req.body.jobId)
+        job = await Job.findById(req.body.jobId).exec()
     
         const recruitmentProcess = new RecruitmentProcess({job: job, jobLink: req.body.link,
             stage: req.body.stage, appliedStudent: student})
-        res.send(await recruitmentProcess.save())
+            
+        const result = await recruitmentProcess.save()
+        await Job.findByIdAndUpdate(job.id, {$push: {recruitmentProcesses: recruitmentProcess}}).exec()
+
+        res.send(result)
 })
 
 
