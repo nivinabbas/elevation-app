@@ -1,4 +1,4 @@
-class StudentModel {
+class jopModel {
     constructor() {
     }
 }

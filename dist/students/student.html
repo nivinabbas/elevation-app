@@ -20,39 +20,30 @@
 <body>
 
 
-    <div id="jobs">
+    <div id="students">
     </div>
 
-    <script id="jop-template" type="text/x-handlebars">
-        {{#each jops}}
-        <div class = "job">
+    <script id="student-template" type="text/x-handlebars">
+        {{#each students}}
 
-            <div class = "title">
-                <h1>{{title}}</h2>
+        <div class = "student">
+
+            <div class = "name">
+                <h3>{{name}}</h3>
             </div>
 
-            <div class="Characteristics">
+            <div class="proc-st">
 
-                <div class="description">
-                    <p>Description : </p>
-                    <p>{{description}}</p> 
+                <div class="process">
+                    <p>In {{processNum}} process : </p> 
+                    <div>{{process}}</div>
                 </div>
 
-                <div class="st-ph-em">
-
-                    <div class = "contacts">
-                        <p>Contacts : </p>
-                        <p>{{phone}}</p>
-                        <p>{{email}}</p>
-                    </div>
-
-                    <div class= "status">
-                        <p>Status : </p>
-                        <h6>  {{status}}</h6>
-                    </div>
+                <div class= "status">
+                    <p>Status : </p>
+                     <h6>  {{status}}</h6>
+                </div>
                     
-                </div>
-                
             </div>
 
         </div>
