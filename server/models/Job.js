@@ -8,8 +8,8 @@ const Job = mongoose.model("Job", new mongoose.Schema({
 }))
 
 
-const getJobsByTitleCompany = (company, title) => Job.find(
-    {company: {$regex: company, $options: 'i'}, title: {$regex: title, $options: 'i'}}, 'id title').exec()
+const getJobsByTitleCompany = (company, title) => 
+Job.find({ company: { $regex: company, $options: 'i' }, title: { $regex: title, $options: 'i' } }, 'id title').exec()
 
 
 module.exports = { Job: Job, getJobsByTitleCompany: getJobsByTitleCompany }

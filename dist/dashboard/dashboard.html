@@ -1,37 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dash board</title>
-    <link rel="stylesheet" href="style.css"  >
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css" integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous">
-</head>
-<body>
-    
-<div class="listDiv">
-    <ul class="ulList">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+    <title>Dashboard</title>
+  </head>
+  <body>
+    <div class="row">
+      <div class="column">
+        <div class="card">
+          <h5>Student work/Not work</h5>
+          <p class="dataCard1">5</p>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="card">
+          <h5>Students in progress</h5>
+          <p class="dataCard2">100</p>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="card">
+          <h5>Total students</h5>
+          <p class="dataCard3">60</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="listDiv">
+      <ul class="ulList">
         <li>
-            
-            <span class="name">Ameer Jmal</span>
-            <span class="detailsClass">311549821 </span>
-            <span class="statusClass">HR INTERVIEW</span>
+          <span class="name">Ameer Jmal</span>
+          <span class="detailsClass">311549821 </span>
+          <span class="statusClass">HR INTERVIEW</span>
         </li>
         <li>
-            
-            <span class="name">Ameer Jmal</span>
-            <span class="detailsClass">311549821 </span>
-            <span class="statusClass">Phone INTERVIEW</span>
+          <span class="name">Ameer Jmal</span>
+          <span class="detailsClass">311549821 </span>
+          <span class="statusClass">Phone INTERVIEW</span>
         </li>
-        
-    </ul>
-</div>
+      </ul>
+    </div>
 
-
-
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="Card/card.js"></script>
     <script src="../dashboard/Table/table.js"></script>
     <script src="main.js"></script>
-</body>
+  </body>
 </html>
