@@ -1,22 +1,13 @@
 const express = require('express')
 const router = express.Router()
-const Item = require('../models/Item')
+const Student = require('../models/Student')
 
 
-router.get('/city/:city', (req, res) => {
-})
-
-router.get('/get', (req, res) => {
-    Item.find({}, function(err, data) {
-        console.log(data)
-        res.send(data)
+router.get('/student/:name', (req, res) => {
+    Student.find({ name: req.params.name }, function(err, studentData) {
+        res.send(studentData)
     })
-});
-
-router.post('/save', (req, res) => {
-    let data = req.body
-    let newItem = new Item(data)
-    newItem.save()
 })
+
 
 module.exports = router
