@@ -3,9 +3,6 @@ const {Student} = require('../models/StudentUser')
 const {Admin} = require('../models/AdminUser')
 
 
-// const setLoggedIn
-
-
 router.post('/register', (req, res) => {
 
     const emailExits = () => res.status(409).send('Email already exists!')
