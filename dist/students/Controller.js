@@ -2,10 +2,6 @@ const dataModel = new StudentModel()
 const renderer = new Renderer()
 
 
-<<<<<<< HEAD
-
-=======
->>>>>>> fadi2
 document.ready(async function () {
     await dataModel.getStudents()
     renderer.renderData(dataModel.students)
