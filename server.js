@@ -1,7 +1,9 @@
 const express = require('express')
 const path = require('path')
 const mongoose = require('mongoose')
-const bodyParser = require('body-parser')
+const session = require('express-session')
+const crypto = require('crypto')
+
 const api = require('./server/routes/api')
 const auth = require('./server/routes/auth')
 
@@ -10,15 +12,21 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/mydb', { useNew
 
 const app = express()
 
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
+app.use(express.urlencoded({extended: false}))
+app.use(express.json())
 
 app.use(express.static(path.join(__dirname, 'dist')))
 app.use(express.static(path.join(__dirname, 'node_modules')))
 
+app.use(session({
+    secret: crypto.randomBytes(16).toString("hex"),
+    resave: false,
+    saveUninitialized: false,
+}))
 
 app.use('/', api)
 app.use('/auth', auth)
+
 
 const port = 8888
 

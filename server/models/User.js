@@ -2,8 +2,8 @@ const mongoose = require('mongoose')
 const crypto = require('crypto')
 
 const userSchema = new mongoose.Schema({
-    name: {type: String, required: true},
-    email: {type: String, required: true, unique: true},
+    name: {type: String, required: true, validate: (s) => s.trim() !== ''},
+    email: {type: String, required: true, unique: true, match: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/},
     phone: String,
     password: String,
     salt: String
