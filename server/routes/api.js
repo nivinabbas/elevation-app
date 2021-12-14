@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
-const Job = require("./models/Job.js")
-const StudentsUser = require("./models/StudentsUser.js")
+const Job = require("../models/Job")
+const StudentsUser = require("../models/StudentUser")
 
 router.get("/jobs", function (req, res) {
     Job.find({}, function (err, result) {

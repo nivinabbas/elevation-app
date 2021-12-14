@@ -18,11 +18,14 @@ body{
 
 #students .student {
     display: grid;
+    width: 70%;
     grid-template-rows: 1fr 2fr ;
     border-radius: 30px;
     max-height: fit-content;
     background-color: #f1f1f1;
     margin: 10px;
+    margin-left: auto;
+    margin-right: auto;
     box-shadow: 5px 5px 10px 2px rgba(0,0,0,.8);
 } 
 
@@ -42,19 +45,9 @@ body{
  margin-left: 20px;
 }
 
-#students .student .Characteristics .st-ph-em{
-    display: grid;
-    grid-template-columns: 1fr 1fr ;
-    grid-template-rows: auto;
-    border-left: 1px solid black;
-}
-
-#students .student .Characteristics .st-ph-em .contacts{
-    border-left: px solid black;
+#students .student .proc-st .process div{
     margin-left: 20px;
-}
-#students .student .Characteristics .st-ph-em .status{
-    border-left: px solid black;
-    margin-left: 20px;
+    box-shadow: 5px 5px 10px 2px rgba(0,0,0,.8);
+    width: 40%;
 }
 
