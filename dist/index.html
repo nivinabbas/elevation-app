@@ -1,40 +1,24 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>WhetherWeather</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Elevation APP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat"
+      rel="stylesheet"
+    />
+
     <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+  </head>
 
-</head>
-
-<body>
-
-    <div class="container">
-        <div id="jobs-container"></div>
-    </div>
-
-    <script id='student-jobs-template' type='text/x-handlebars-template'>
-        {{#each job}}
-            <div class="job-container" data-id="">
-                <h2>title</h2>
-                <p>dicreption</p>
-                <p>email</p>
-                <p>status</p>
-            </div>
-        {{/each}}
-    </script>
-
+  <body>
+  
     <script src="./jquery/dist/jquery.js"></script>
     <script src="./handlebars/dist/handlebars.js"></script>
     <script src="DataModel.js"></script>
     <script src="Renderer.js"></script>
     <script src="main.js"></script>
-</body>
-
-
+  </body>
 </html>
