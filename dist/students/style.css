@@ -1,0 +1,60 @@
+body{
+    margin: 10px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#students{ 
+    margin-top: 10px;
+    border-radius: 30px;
+}
+
+/* @media (max-width: 600px) {
+    #jops {
+        grid-template-columns:  1fr;
+    }
+  } */
+
+
+
+#students .student {
+    display: grid;
+    grid-template-rows: 1fr 2fr ;
+    border-radius: 30px;
+    max-height: fit-content;
+    background-color: #f1f1f1;
+    margin: 10px;
+    box-shadow: 5px 5px 10px 2px rgba(0,0,0,.8);
+} 
+
+
+#students .student .name{
+    text-align: center; 
+    margin: auto;
+}
+
+#students .student .proc-st{
+    display: grid;
+    grid-template-columns: 3fr 1fr ;
+    grid-template-rows: auto;
+}
+
+#students .student .proc-st .process{
+ margin-left: 20px;
+}
+
+#students .student .Characteristics .st-ph-em{
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+    grid-template-rows: auto;
+    border-left: 1px solid black;
+}
+
+#students .student .Characteristics .st-ph-em .contacts{
+    border-left: px solid black;
+    margin-left: 20px;
+}
+#students .student .Characteristics .st-ph-em .status{
+    border-left: px solid black;
+    margin-left: 20px;
+}
+

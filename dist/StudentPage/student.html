@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mongoose Expenses Project</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <!-- <script src="./jquery/dist/jquery.js"></script>
+    <script src="./handlebars/dist/handlebars.js"></script> -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+
+    <div id="jobs">
+    </div>
+
+    <script id="jop-template" type="text/x-handlebars">
+        {{#each jops}}
+        <div class = "job">
+
+            <div class = "title">
+                <h1>{{title}}</h2>
+            </div>
+
+            <div class="Characteristics">
+
+                <div class="description">
+                    <p>Description : </p>
+                    <p>{{description}}</p> 
+                </div>
+
+                <div class="st-ph-em">
+
+                    <div class = "contacts">
+                        <p>Contacts : </p>
+                        <p>{{phone}}</p>
+                        <p>{{email}}</p>
+                    </div>
+
+                    <div class= "status">
+                        <p>Status : </p>
+                        <h6>  {{status}}</h6>
+                    </div>
+                    
+                </div>
+                
+            </div>
+
+        </div>
+        {{/each}}
+    </script>
+
+
+    <script src="Model.js"></script>
+    <script src="View.js"></script>
+    <script src="Controller.js"></script>
+</body>
+
+</html>
