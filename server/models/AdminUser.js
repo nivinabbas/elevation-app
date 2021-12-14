@@ -9,7 +9,7 @@ const adminUserSchema = new mongoose.Schema({
 }).add(userSchema)
 
 
-const adminModel = mongoose.model("AdminUser", adminUserSchema) 
+const Admin = mongoose.model("AdminUser", adminUserSchema) 
 
 
-module.exports = adminModel
+module.exports = {Admin: Admin}

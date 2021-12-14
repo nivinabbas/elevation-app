@@ -10,7 +10,7 @@ const questionSchema = new mongoose.Schema({
 const recruitmentProcessSchema = new mongoose.Schema({
     job: {type: mongoose.Types.ObjectId, ref: 'Job', require: true},
     jobLink: String,
-    recruitmentStatus: {type: Number, require: true},
+    stage: {type: Number, require: true},
     appliedStudent: {type: mongoose.Types.ObjectId, ref: "StudentUser", require: true},
     salary: Number,
     questions: [questionSchema]
@@ -18,7 +18,7 @@ const recruitmentProcessSchema = new mongoose.Schema({
 })
 
 
-const recruitmentProcessModel = mongoose.model('RecruitmentProcess', recruitmentProcessSchema)
+const RecruitmentProcess = mongoose.model('RecruitmentProcess', recruitmentProcessSchema)
 
 
-module.exports = recruitmentProcessModel
+module.exports = {RecruitmentProcess: RecruitmentProcess}
