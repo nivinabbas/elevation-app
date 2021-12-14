@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Jobs</title>
+</head>
+<body>
+    <div class="container"></div>
+
+    <script id='jobs-template' type='text/x-handlebars-template'>
+        <div class="jobs-container">
+            {{#each job}}
+                <h2>{{title}}</h2>
+                <h2>{{company}}</h2>
+                <p>{{decription}}</p>
+            {{/each}}
+        </div>
+    </script>
+    
+    <script src="model.js"></script>
+    <script src="view.js"></script>
+    <script src="main.js"></script>
+
+</body>
+</html>
