@@ -3,7 +3,7 @@ body{
     font-family: 'Montserrat', sans-serif;
 }
 
-#jobs{ 
+#students{ 
     margin-top: 10px;
     border-radius: 30px;
 }
@@ -16,9 +16,9 @@ body{
 
 
 
-#jobs .job {
+#students .student {
     display: grid;
-    grid-template-columns: 3fr 20fr ;
+    grid-template-rows: 1fr 2fr ;
     border-radius: 30px;
     max-height: fit-content;
     background-color: #f1f1f1;
@@ -27,34 +27,33 @@ body{
 } 
 
 
-#jobs .job .title{
+#students .student .name{
     text-align: center; 
     margin: auto;
 }
 
-#jobs .job .Characteristics{
+#students .student .proc-st{
     display: grid;
-    grid-template-columns: 1fr 1fr ;
+    grid-template-columns: 3fr 1fr ;
     grid-template-rows: auto;
-    border-left: 2px solid black;
 }
 
-#jobs .job .Characteristics .description{
+#students .student .proc-st .process{
  margin-left: 20px;
 }
 
-#jobs .job .Characteristics .st-ph-em{
+#students .student .Characteristics .st-ph-em{
     display: grid;
     grid-template-columns: 1fr 1fr ;
     grid-template-rows: auto;
     border-left: 1px solid black;
 }
 
-#jobs .job .Characteristics .st-ph-em .contacts{
+#students .student .Characteristics .st-ph-em .contacts{
     border-left: px solid black;
     margin-left: 20px;
 }
-#jobs .job .Characteristics .st-ph-em .status{
+#students .student .Characteristics .st-ph-em .status{
     border-left: px solid black;
     margin-left: 20px;
 }
