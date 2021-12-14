@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/nivinabbas/elevation-app#readme",
   "dependencies": {
+    "crypto": "^1.0.1",
+    "express": "^4.17.1",
     "mongoose": "^6.1.1"
   }
 }

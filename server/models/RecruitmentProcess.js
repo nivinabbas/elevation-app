@@ -21,4 +21,4 @@ const recruitmentProcessSchema = new mongoose.Schema({
 const recruitmentProcessModel = mongoose.model('RecruitmentProcess', recruitmentProcessSchema)
 
 
-module.exports = {recruitmentProcessModel: recruitmentProcessModel}
+module.exports = recruitmentProcessModel
