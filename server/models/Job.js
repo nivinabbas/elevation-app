@@ -7,4 +7,4 @@ const jobModel = mongoose.model("Job", new mongoose.Schema({
 })) 
 
 
-module.exports = {jobModel: jobModel}
+module.exports = jobModel

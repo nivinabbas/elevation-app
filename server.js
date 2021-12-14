@@ -3,6 +3,7 @@ const path = require('path')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const api = require('./server/routes/api')
+const auth = require('./server/routes/auth')
 
 
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/mydb', { useNewUrlParser: true })
@@ -17,6 +18,7 @@ app.use(express.static(path.join(__dirname, 'node_modules')))
 
 
 app.use('/', api)
+app.use('/auth', auth)
 
 const port = 8888
 
