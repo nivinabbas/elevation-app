@@ -6,6 +6,7 @@ const crypto = require('crypto')
 
 const api = require('./server/routes/api')
 const auth = require('./server/routes/auth')
+const jobs = require('./server/routes/jobs')
 
 
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/mydb', { useNewUrlParser: true })
@@ -26,6 +27,7 @@ app.use(session({
 
 app.use('/', api)
 app.use('/auth', auth)
+app.use('/jobs', jobs)
 
 
 const port = 8888

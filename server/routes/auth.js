@@ -1,6 +1,6 @@
 const router = require('express').Router()
-const Student = require('../models/StudentUser')
-const Admin = require('../models/AdminUser')
+const {Student} = require('../models/StudentUser')
+const {Admin} = require('../models/AdminUser')
 
 
 // const setLoggedIn
@@ -13,10 +13,13 @@ router.post('/register', (req, res) => {
     Admin.findOne({email: req.body.email}).exec()
         .then(data => {
             if(data != null)
-                return emailExits
+                return emailExits()
             const student = new Student({name: req.body.name,
                 email: req.body.email,
-                phone: req.body.phone || '',})
+                phone: req.body.phone || '',
+                cvLink: req.body.cvLink || '',
+                currentStatus: req.body.currentStatus
+            })
                 student.createPassword(req.body.password)
         
                 student.save().then(data => {
@@ -30,10 +33,12 @@ router.post('/register', (req, res) => {
                             msg = "Incorrect email!"
                         else if(err.errors['name'])
                             msg = "Name is required!"
+                        else if(err.errors['currentStatus'])
+                            msg = "Employement status is required!"
                         res.status(400).send(msg)
                     }
                     else
-                        res.status(409).send('Email already exists!')
+                        emailExits()
                 })
 
         })
@@ -48,11 +53,13 @@ router.post('/login', (req, res) => {
                 if(admin == null || !admin.validPassword(req.body.password))
                     return wrongDetails()
                 req.session.role = 2;
+                console.log(req.session.role)
                 return res.send('Logged in as admin!')
             })
         }
         else if(student.validPassword(req.body.password)) {
             req.session.role = 1
+            req.session.studentId = student.id
             return res.send('Logged in!')
         }
         else
