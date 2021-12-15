@@ -50,20 +50,9 @@ router.get("/studentSettings", (req, res) => {
 })
 
 router.get("/student/profile", async(req, res) => {
-<<<<<<< HEAD
     if (req.session.userId == undefined)
         return res.status(401).send("Please Login First")
     res.json(await Student.findById(req.session.userId, '-password -_id'))
-=======
-    const studentId = req.session.studentId
-    if (!studentId) {
-        res.status(401).send("Please Login First")
-        return null
-    }
-
-    const studentData = await Student.findById(studentId)
-    res.json(studentData)
->>>>>>> master
 })
 
 router.put("/student/editData", async(req, res) => {
