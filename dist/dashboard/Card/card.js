@@ -1,11 +1,11 @@
 class dataOfCards {
     constructor() {
-      this.dataOfCards = ["1","2","3"];
+      this.dataOfCards = []
     }
 
-    getDataFromDB =  function () {
-        this.dataOfCards =  $.get(`/dataOfCards`);
-        return this.dataOfCards;
+    getDataFromDB =  async function () {
+        this.dataOfCards =  await $.get(`http://localhost:8888/dataOfCards/`);
+        console.log('qweqzzzwe')
       };
 
      
