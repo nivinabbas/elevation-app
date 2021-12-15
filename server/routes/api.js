@@ -44,7 +44,6 @@ router.get('/studentsDetails', async(req, res) => {
 
 router.get("/student/profile", async(req, res) => {
     const studentId = req.session.studentId
-
     if (!studentId) {
         res.status(401).send("Please Login First")
         return null

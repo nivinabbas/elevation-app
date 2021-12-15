@@ -16,14 +16,14 @@ router.get('/suggested/:company/:title', (req, res) => {
 })
 
 
-router.post('/add', async (req, res) => {
+router.post('/process', async (req, res) => {
     if(req.session.role == undefined)
         return res.send('Not logged in')
 
-    const student = await Student.findById(req.session.studentId).exec()
+    const student = await Student.findById(req.session.userId).exec()
     let job
     if(req.body.jobId == undefined) {
-        job = new Job({company: req.body.company, title: req.body.title, decription: req.body.decription})
+        job = new Job({company: req.body.company, title: req.body.title, description: req.body.description})
         await job.save()
     }
     else
@@ -33,6 +33,7 @@ router.post('/add', async (req, res) => {
             stage: req.body.stage, appliedStudent: student})
             
         const result = await recruitmentProcess.save()
+        await Student.findByIdAndUpdate(student.id, {$push: {recruitmentProcesses: recruitmentProcess}}).exec()
         await Job.findByIdAndUpdate(job.id, {$push: {recruitmentProcesses: recruitmentProcess}}).exec()
 
         res.send(result)
