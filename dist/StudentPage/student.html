@@ -5,9 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mongoose Expenses Project</title>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
-        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <title>Student Jobs</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -20,14 +19,13 @@
 <body>
 
 
-    <div id="jobs">
-    </div>
+    <div id="jobs"></div>
 
     <script id="jop-template" type="text/x-handlebars">
         {{#each jops}}
-        <div class = "job">
+        <div class="job">
 
-            <div class = "title">
+            <div class="title">
                 <h1>{{title}}</h2>
             </div>
 
@@ -35,24 +33,24 @@
 
                 <div class="description">
                     <p>Description : </p>
-                    <p>{{description}}</p> 
+                    <p>{{description}}</p>
                 </div>
 
                 <div class="st-ph-em">
 
-                    <div class = "contacts">
+                    <div class="contacts">
                         <p>Contacts : </p>
                         <p>{{phone}}</p>
                         <p>{{email}}</p>
                     </div>
 
-                    <div class= "status">
+                    <div class="status">
                         <p>Status : </p>
-                        <h6>  {{status}}</h6>
+                        <h6> {{status}}</h6>
                     </div>
-                    
+
                 </div>
-                
+
             </div>
 
         </div>
