@@ -23,7 +23,7 @@ router.post('/process', async (req, res) => {
     const student = await Student.findById(req.session.userId).exec()
     let job
     if(req.body.jobId == undefined) {
-        job = new Job({company: req.body.company, title: req.body.title, decription: req.body.decription})
+        job = new Job({company: req.body.company, title: req.body.title, description: req.body.description})
         await job.save()
     }
     else
@@ -33,6 +33,7 @@ router.post('/process', async (req, res) => {
             stage: req.body.stage, appliedStudent: student})
             
         const result = await recruitmentProcess.save()
+        await Student.findByIdAndUpdate(student.id, {$push: {recruitmentProcesses: recruitmentProcess}}).exec()
         await Job.findByIdAndUpdate(job.id, {$push: {recruitmentProcesses: recruitmentProcess}}).exec()
 
         res.send(result)
