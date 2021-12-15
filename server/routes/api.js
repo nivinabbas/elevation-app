@@ -32,11 +32,4 @@ router.get('/studentsDetails',  async (req, res) => {
 })
 
 
-router.get('/login', (req, res) => {
-    if(req.session.role != undefined)
-        return res.redirect('/')
-    res.sendFile(path.join(__dirname, '../', '../', 'dist', 'login', 'index.html'))
-})
-
-
 module.exports = router
