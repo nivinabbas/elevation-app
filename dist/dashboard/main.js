@@ -66,24 +66,22 @@ updateButton.addEventListener('click', function onOpen() {
   }
 });
 
-
 confirmBtn.addEventListener('click', function onOpen() {
   var selectEl = document.querySelector('select');
   var inputName = $('.name').val();
-  var inputSalary=$('.salary').val();
-  var inputQuestions=$('.questions').val();
-  var inputJobLink=$('.jobLink').val();
-  let inputs={
-    name:inputName,
-    salary:inputSalary,
-    questions:inputQuestions,
-    jobLink:inputJobLink,
-    stage:selectEl.value
+  var inputTitle = $('.jobTitle').val();
+  var inputDescription = $('.description').val();
+  var inputJobLink = $('.jobLink').val();
+  let inputs = {
+    company: inputName,
+    title: inputTitle,
+    description: inputDescription,
+    jobLink: inputJobLink,
+    stage: selectEl.value,
   };
   console.log(inputs);
-
- 
-  console.log(inputs);
+  data.saveDataOfProcess(inputs);
+  console.log(data);
 });
 // "Favorite animal" input sets the value of the submit button
 selectEl.addEventListener('change', function onSelect(e) {
