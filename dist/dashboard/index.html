@@ -4,107 +4,170 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" media="screen" href="/dashboard/style.css" />
     <link
-    href="https://fonts.googleapis.com/css?family=Montserrat"
-    rel="stylesheet"
-  />
-  <link
-    rel="stylesheet"
-    href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
-    integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP"
-    crossorigin="anonymous"
-  />
-  <link
-    rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Nunito:wght@800&display=swap"
-  />
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="/dashboard/style.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+      integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@800&display=swap"
+    />
     <title>Dashboard</title>
   </head>
   <body>
-
-    <!-- <div class="navbar"> -->
-      <menu class="menu">
-        <button class="menu__item active">
-          <div class="menu__icon">
-            <i class="fas fa-home"></i>
-          </div>
-          <strong class="menu__text active">home</strong>
-        </button>
-        <button class="menu__item">
-          <div class="menu__icon">
-            <i class="fas fa-user"></i>
-          </div>
-          <strong class="menu__text">Student</strong>
-        </button>
-        <button class="menu__item">
-          <div class="menu__icon">
-            <i class="fas fa-briefcase"></i>
-          </div>
-          <strong class="menu__text"> Jobs</strong>
-        </button>
-      </menu>
-    <!-- </div> -->
+    <menu class="menu">
+      <button class="menu__item active">
+        <div class="menu__icon">
+          <i class="fas fa-home"></i>
+        </div>
+        <strong class="menu__text active">home</strong>
+      </button>
+      <button class="menu__item">
+        <div class="menu__icon">
+          <i class="fas fa-user"></i>
+        </div>
+        <strong class="menu__text">Student</strong>
+      </button>
+      <button class="menu__item">
+        <div class="menu__icon">
+          <i class="fas fa-briefcase"></i>
+        </div>
+        <strong class="menu__text"> Jobs</strong>
+      </button>
+    </menu>
 
     <div class="cards">
-    <div class="row">
-      <div class="column">
-        <div class="card">
-          <h5>Student work/Not work</h5>
-          <p class="dataCard1">5</p>
+      <div class="row">
+        <div class="column">
+          <div class="card">
+            <h5>Student/s work</h5>
+            <p class="dataCard1">5</p>
+          </div>
         </div>
-      </div>
-
-      <div class="column">
-        <div class="card">
-          <h5>Students in progress</h5>
-          <p class="dataCard2">100</p>
+        <div class="column">
+          <div class="card">
+            <h5>Student/s Not work</h5>
+            <p class="dataCard4">5</p>
+          </div>
         </div>
-      </div>
 
-      <div class="column">
-        <div class="card">
-          <h5>Total students</h5>
-          <p class="dataCard3">60</p>
+        <div class="column">
+          <div class="card">
+            <h5>Students in progress</h5>
+            <p class="dataCard2">100</p>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="card">
+            <h5>Total students</h5>
+            <p class="dataCard3">60</p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-    
+
     <div id="students">
+      <div>
+        <dialog id="favDialog">
+          <form method="dialog">
+            <p>
+              <label
+                >name:
+              <input>
+              </label>
+            </p>
+            <p>
+              <label
+                >Stage:
+                <select>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </select>
+              </label>
+            </p>
+            <p>
+              <label
+                >Salary:
+                <input />
+              </label>
+            </p>
+            <p>
+              <label
+                >Job link:
+                <input />
+              </label>
+            </p>
+            <p>
+              <label
+                >Questions:
+                <input />
+              </label>
+            </p>
+            <menu>
+              <button value="cancel">Cancel</button>
+              <button id="confirmBtn" value="default">Confirm</button>
+            </menu>
+          </form>
+        </dialog>
+      </div>
+
+      <menu>
+        <button id="updateDetails">Add process</button>
+      </menu>
+
+      <output aria-live="polite"></output>
     </div>
 
     <script id="student-template" type="text/x-handlebars">
-        {{#each students}}
+
+      {{#each students}}
 
         <div class = "student">
 
             <div class = "name">
-                <h3>{{name}}</h3>
+
+                <h3>{{name}}  </h3>
+
+
             </div>
 
             <div class="proc-st">
 
                 <div class="process">
-                    <span>In {{processNum}} process : </span> 
+
+                    <h4>  process/es {{processNum}} :</h4>
+
                     {{#each recruitmentProcesses}}
-                        <div>{{job.title}} at {{job.company}}    -   <b>{{stage}}<b></div>
+                        <li>{{job.title}} at {{job.company}}    -   <b>{{stage}}<b></li>
                     {{/each}}
-                </div>
+                        </div>
 
                 <div class= "status">
-                    <p>Most recent status : </p>
+                    <p>Status: </p>
                      <h6>{{currentStatus}}</h6>
                 </div>
-                    
+
             </div>
 
         </div>
         {{/each}}
     </script>
-
-
-    
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
