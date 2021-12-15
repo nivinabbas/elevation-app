@@ -43,8 +43,7 @@ router.get('/studentsDetails', async(req, res) => {
 })
 
 router.get("/student/profile", async(req, res) => {
-    // const studentId = req.session.studentId
-    const studentId = "61b9d19b3609a19efc8535a1"
+    const studentId = req.session.studentId
     if (!studentId) {
         res.status(401).send("Please Login First")
         return null
@@ -54,8 +53,7 @@ router.get("/student/profile", async(req, res) => {
 })
 
 router.put("/student/editData", async(req, res) => {
-    // const studentId = req.session.studentId
-    const studentId = "61b9d19b3609a19efc8535a1"
+    const studentId = req.session.studentId
 
     if (!studentId || !req.body) {
         res.status(401)
