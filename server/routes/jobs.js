@@ -32,6 +32,7 @@ router.post('/process', async (req, res) => {
     else
         studentId = req.session.userId
         
+        
     const student = await Student.findById(studentId).exec()
     let job
     if(req.body.jobId == undefined) {

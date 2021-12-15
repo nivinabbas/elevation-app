@@ -2,7 +2,6 @@ let data = new dataOfCards();
 
 async function loadPage() {
   await data.getDataFromDB();
-  console.log(data.dataOfCards);
 
   $('.dataCard1').text(data.dataOfCards[0]);
   $('.dataCard4').text(data.dataOfCards[2] - data.dataOfCards[0]);
@@ -59,8 +58,12 @@ var selectEl = document.querySelector('select');
 var confirmBtn = document.getElementById('confirmBtn');
 
 // "Update details" button opens the <dialog> modally
-updateButton.addEventListener('click', function onOpen() {
+updateButton.addEventListener('click', async function onOpen() {
+
   if (typeof favDialog.showModal === 'function') {
+    const students = await data.getDataAboutStudent();
+    const selectEl = $('#student-name')
+    students.forEach(student => selectEl.append($(`<option value='${student._id}'>${student.name}</option>`)))
     favDialog.showModal();
   } else {
     alert('The <dialog> API is not supported by this browser');
@@ -68,30 +71,22 @@ updateButton.addEventListener('click', function onOpen() {
 });
 
 confirmBtn.addEventListener('click',async function onOpen() {
-  var selectEl = document.querySelector('select');
-  var dataOfNameStudents = await data.getDataAboutStudent();
   var inputName = $('.name').val();
   var inputTitle = $('.jobTitle').val();
   var inputDescription = $('.description').val();
   var inputJobLink = $('.jobLink').val();
-  var inputNameStudent=$('.nameStudent').val();
   let inputs = {
-    name: dataOfNameStudents.map(o=>{
-
-return o.name;
-    }),
+    studentId: $('#student-name').val(),
     company: inputName,
     title: inputTitle,
     description: inputDescription,
     jobLink: inputJobLink,
-    stage: selectEl.value,
+    stage: $('#stage').val(),
   };
-  console.log(inputs);
   data.saveDataOfProcess(inputs);
 });
 // "Favorite animal" input sets the value of the submit button
 selectEl.addEventListener('change', function onSelect(e) {
-  console.log(selectEl.value);
   confirmBtn.value = selectEl.value;
 });
 // "Confirm" button of form triggers "close" on dialog because of [method="dialog"]

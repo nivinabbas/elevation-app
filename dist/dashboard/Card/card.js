@@ -11,9 +11,7 @@ class dataOfCards {
     $.post('/jobs/process', process, function (res) {});
   }
 
-  getDataAboutStudent = async function () {
-    const data = await $.get('studentsList');
-    console.log(data);
-    return data;
+  getDataAboutStudent = function () {
+    return $.get('studentsList');;
   };
 }

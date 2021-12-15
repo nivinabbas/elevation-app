@@ -248,7 +248,6 @@ const createJobsAndProcesses = async () => {
 
   for (let p of processes) {
     const job = new Job(p.job);
-    console.log(job)
     await job.save();
 
     const student = await Student.findOne(p.student).exec();
