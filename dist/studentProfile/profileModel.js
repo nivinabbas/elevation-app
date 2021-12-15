@@ -1,20 +1,34 @@
 class ProfileModel {
     constructor() {
-        this.studentData
+        this.studentData = []
     }
 
-    getStudentrData() {
-        $.ajax({
+    async getStudentrData() {
+        await $.ajax({
             method: `GET`,
             url: `/student/profile`,
-            success: function(result) {
+            success: (result) => {
                 this.studentData = result
             },
-            error: function(xhr, text, err) {
+            error: (xhr, text, err) => {
+                console.log(xhr)
+            }
+        })
+    }
+
+    async editStudentData(student) {
+        await $.ajax({
+            method: `PUT`,
+            url: `/student/editData`,
+            body: student,
+            success: (result) => {
+
+            },
+            error: (xhr, text, err) => {
                 console.log(xhr)
             }
         })
     }
 }
 
-module.exports = ProfileModel
+// module.exports = ProfileModel
