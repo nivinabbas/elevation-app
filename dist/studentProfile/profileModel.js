@@ -20,7 +20,7 @@ class ProfileModel {
         await $.ajax({
             method: `PUT`,
             url: `/student/editData`,
-            body: student,
+            data: student,
             success: (result) => {
 
             },

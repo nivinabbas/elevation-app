@@ -1,7 +1,7 @@
 const profileModel = new ProfileModel()
 const renderer = new Renderer()
 
-$("#submit-profile").on("click", function() {
+$(document).on("click", "#submit-profile", function() {
     let student = {
         name: $("#nameInput").val(),
         email: $("#emailInput").val(),
@@ -9,7 +9,6 @@ $("#submit-profile").on("click", function() {
         phone: $("#phoneInput").val(),
         cvLink: $("#cvInput").val()
     }
-
     profileModel.editStudentData(student)
 })
 

@@ -17,26 +17,29 @@
 
     <script id='profile-template' type='text/x-handlebars-template'>
         <div class="profile">
-            <form>
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" value="{{name}}"><br>
-
-                    <label for="email">email</label>
-                    <input type="text" id="email" name="email" value="{{email}}"><br>
-                    
-                    <!--
-                    <label for="passwordInput">Password</label>
-                    <input type="text" id="passwordInput" name="passwordInput" value="{{password}}"><br>
-                    -->
-
-                    <label for="phone">Phone</label>
-                    <input type="text" id="phone" name="phone" value="{{phone}}"><br>
-
-                    <label for="cv">CV</label>
-                    <input type="text" id="cv" name="cv" value="{{cvLink}}"><br>
-
-                    <input type="submit" value="Submit" id="submit-profile">
-            </form>
+            <table>
+                <tr>
+                    <td>Name</td>
+                    <td><input type="text" name="" id="nameInput" value="{{name}}"></td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td><input type="text" name="" id="emailInput" value="{{email}}"></td>
+                </tr>
+                <tr>
+                    <td>Phone</td>
+                    <td><input type="text" name="" id="phoneInput" value="{{phone}}"></td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td><input type="text" name="" id="passwordInput" value="{{password}}" disabled></td>
+                </tr>
+                <tr>
+                    <td>CV</td>
+                    <td><input type="text" name="" id="cvInput" value="{{cvLink}}"></td>
+                </tr>
+            </table>
+            <input type="submit" value="Submit" id="submit-profile">
         </div>
     </script>
 

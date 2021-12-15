@@ -79,7 +79,6 @@ router.put("/student/editData", async(req, res) => {
         student.cvLink = req.body.cvLink
     }
 
-
     Student.findByIdAndUpdate(studentId, student).exec()
     res.send("done")
 })
