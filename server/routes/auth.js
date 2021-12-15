@@ -3,12 +3,16 @@ const {Student} = require('../models/StudentUser')
 const {Admin} = require('../models/AdminUser')
 const path = require('path')
 
-
 router.get(['/login', '/register'], (req, res) => {
     if(req.session.role != undefined)
         return res.redirect('/')
     res.sendFile(path.join(__dirname, '../', '../', 'dist', 'login', 'index.html'))
 })
+
+const addUserData = (req, role, userId) => {
+    req.session.role = role
+    req.session.userId = userId
+}
 
 
 router.post('/register', (req, res) => {
@@ -27,8 +31,8 @@ router.post('/register', (req, res) => {
                 student.createPassword(req.body.password)
         
                 student.save().then(data => {
-                    req.session.role = 1;
-                    res.send(data)
+                    addUserData(req, 1, student.id)
+                    res.json(data)
                 })
                 .catch(err => {
                     if(err.errors) {
@@ -57,13 +61,12 @@ router.post('/login', (req, res) => {
             Admin.findOne({email: req.body.email}).exec().then(admin => {
                 if(admin == null || !admin.validPassword(req.body.password))
                     return wrongDetails()
-                req.session.role = 2;
+                addUserData(req, 2, admin.id)
                 return res.send('Logged in as admin!')
             })
         }
         else if(student.validPassword(req.body.password)) {
-            req.session.role = 1
-            req.session.studentId = student.id
+            addUserData(req, 1, student.id)
             return res.send('Logged in!')
         }
         else

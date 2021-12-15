@@ -42,14 +42,56 @@ router.get('/studentsDetails', async(req, res) => {
     res.send(students)
 })
 
+
+router.get("/studentSettings", (req, res) => {
+    if (req.session.userId == undefined)
+        return res.redirect('/login/')
+    res.sendFile(path.join(__dirname, '../', '../', 'dist', 'studentProfile', 'index.html'))
+})
+
 router.get("/student/profile", async(req, res) => {
-    const studentId = req.session.studentId
-    if (!studentId) {
-        res.statusCode(401).send("Please Login First")
-        return null
+    if (req.session.userId == undefined) {
+        return res.redirect('/login/')
     }
-    const studentData = await Student.findById(studentId)
+
+    const studentData = await Student.findById(req.session.userId)
     res.json(studentData)
 })
+
+router.put("/student/editData", async(req, res) => {
+    
+    const userId = req.session.userId
+
+    if (req.session.userId == undefined) {
+        return res.redirect('/login/')
+    }
+
+
+    let student = {}
+    if (req.body.name) {
+        student.name = req.body.name
+    }
+    if (req.body.email) {
+        student.email = req.body.email
+    }
+
+    if (req.body.phone) {
+        student.phone = req.body.phone
+    }
+    if (req.body.cvLink) {
+        student.cvLink = req.body.cvLink
+    }
+
+    Student.findByIdAndUpdate(userId, student).exec()
+    res.send("done")
+})
+
+
+router.get('/studentsList', async(req, res) => {
+    if (req.session.userId == undefined)
+        return res.redirect('/login/')
+    res.json(await Student.find({}, '_id name'))
+})
+
 
 module.exports = router

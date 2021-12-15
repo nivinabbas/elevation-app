@@ -15,15 +15,27 @@ router.get('/suggested/:company/:title', (req, res) => {
     getJobsByTitleCompany(req.params.company, req.params.title).then(data => res.send(data))
 })
 
+router.get('/studentProcesses', async (req, res) => {
+    const data = await RecruitmentProcess.find({appliedStudent: req.session.userId}, '-_id -appliedStudent -__v')
+    .populate({path: 'job', select: '-_id -recruitmentProcesses -__v'}).exec()
+    res.send(data)
+})
 
-router.post('/add', async (req, res) => {
+
+router.post('/process', async (req, res) => {
     if(req.session.role == undefined)
         return res.send('Not logged in')
 
-    const student = await Student.findById(req.session.studentId).exec()
+    let studentId
+    if(req.session.role == 2)
+        studentId = req.body.studentId
+    else
+        studentId = req.session.userId
+        
+    const student = await Student.findById(studentId).exec()
     let job
     if(req.body.jobId == undefined) {
-        job = new Job({company: req.body.company, title: req.body.title, decription: req.body.decription})
+        job = new Job({company: req.body.company, title: req.body.title, description: req.body.description})
         await job.save()
     }
     else
@@ -33,6 +45,7 @@ router.post('/add', async (req, res) => {
             stage: req.body.stage, appliedStudent: student})
             
         const result = await recruitmentProcess.save()
+        await Student.findByIdAndUpdate(student.id, {$push: {recruitmentProcesses: recruitmentProcess}}).exec()
         await Job.findByIdAndUpdate(job.id, {$push: {recruitmentProcesses: recruitmentProcess}}).exec()
 
         res.send(result)

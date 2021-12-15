@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/studentProfile/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <link rel="shortcut icon" href="#">
+    <title>Student Profile</title>
+</head>
+
+<body>
+    <div class="container"></div>
+
+    <div id="add-recruitment">
+        <table>
+            <tr>
+                <td>Name</td>
+                <td><input class="name"></td>
+            </tr>
+            <tr>
+                <td>Stage</td>
+                <td>
+                    <select>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Salary</td>
+                <td><input class="salary"></td>
+            </tr>
+            <tr>
+                <td>Job Link</td>
+                <td><input class="jobLink"></td>
+            </tr>
+            <tr>
+                <td>Questions</td>
+                <td><input class="questions"></td>
+            </tr>
+        </table>
+
+        <button id="confirmBtn" value="default">Confirm</button>
+    </div>
+
+    <script id='profile-template' type='text/x-handlebars-template'>
+        <div class="profile">
+            <table>
+                <tr>
+                    <td>Name</td>
+                    <td><input type="text" name="" id="nameInput" value="{{name}}"></td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td><input type="text" name="" id="emailInput" value="{{email}}"></td>
+                </tr>
+                <tr>
+                    <td>Phone</td>
+                    <td><input type="text" name="" id="phoneInput" value="{{phone}}"></td>
+                </tr>
+                <tr>
+                    <td>CV</td>
+                    <td><input type="text" name="" id="cvInput" value="{{cvLink}}"></td>
+                </tr>
+            </table>
+            <input type="submit" value="Submit" id="submit-profile">
+        </div>
+    </script>
+
+
+    <script src="/studentProfile/profileModel.js"></script>
+    <script src="/studentProfile/view.js"></script>
+    <script src="/studentProfile/main.js"></script>
+
+</body>
+
+</html>

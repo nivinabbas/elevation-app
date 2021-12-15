@@ -82,10 +82,10 @@
       <div>
         <dialog id="favDialog">
           <form method="dialog">
-            <p>
+            <p  >
               <label
-                >name:
-              <input>
+               >Company name:
+              <input class="name">
               </label>
             </p>
             <p>
@@ -102,20 +102,20 @@
             </p>
             <p>
               <label
-                >Salary:
-                <input />
+                >Job Title:
+                <input class="jobTitle"/>
               </label>
             </p>
             <p>
               <label
                 >Job link:
-                <input />
+                <input class="jobLink"/>
               </label>
             </p>
             <p>
               <label
-                >Questions:
-                <input />
+                >Description:
+                <input class="description"/>
               </label>
             </p>
             <menu>
@@ -160,6 +160,7 @@
                 <div class= "status">
                     <p>Status: </p>
                      <h6>{{currentStatus}}</h6>
+                     <h3>Email: <b>{{email}}</b></h3>
                 </div>
 
             </div>

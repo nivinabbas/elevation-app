@@ -1,17 +1,14 @@
 class dataOfCards {
-    constructor() {
-      this.dataOfCards = []
-    }
+  constructor() {
+    this.dataOfCards = [];
+  }
 
-    getDataFromDB =  async function () {
-        this.dataOfCards =  await $.get(`http://localhost:8888/dataOfCards/`);
-        console.log('qweqzzzwe')
-      };
+  getDataFromDB = async function () {
+    this.dataOfCards = await $.get(`http://localhost:8888/dataOfCards/`);
+    console.log('qweqzzzwe');
+  };
 
-      saveDataOfProcess(process) {
-        $.post('/process', process, function (res) {});
-      }
-     
+  saveDataOfProcess(process) {
+    $.post('/jobs/process', process, function (res) {});
+  }
 }
-
-
