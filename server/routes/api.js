@@ -5,8 +5,8 @@ const { Student, studentsDetails } = require("../models/StudentUser")
 const path = require('path');
 
 
-router.get('/', (req, res, next) => {
-    if (req.session.role == undefined)
+router.get('/', (req ,res, next) => {
+    if(req.session.role == undefined)
         return res.redirect('/login/')
     return res.sendFile(path.join(__dirname, '../', '../', 'dist', 'dashboard', 'index.html'))
 })
@@ -42,23 +42,26 @@ router.get('/studentsDetails', async(req, res) => {
     res.send(students)
 })
 
+
+router.get("/studentSettings", (req, res) => {
+    if (req.session.userId == undefined)
+        return res.redirect('/login/')
+    res.sendFile(path.join(__dirname, '../', '../', 'dist', 'studentProfile', 'index.html'))
+})
+
 router.get("/student/profile", async(req, res) => {
-    const studentId = req.session.studentId
-    if (!studentId) {
-        res.status(401).send("Please Login First")
-        return null
-    }
-    const studentData = await Student.findById(studentId)
-    res.json(studentData)
+    if (req.session.userId == undefined)
+        return res.status(401).send("Please Login First")
+    res.json(await Student.findById(req.session.userId, '-password -_id'))
 })
 
 router.put("/student/editData", async(req, res) => {
-    const studentId = req.session.studentId
+    const userId = req.session.userId
 
-    if (!studentId || !req.body) {
-        res.status(401)
-        return null
+    if (req.session.userId == undefined) {
+        return res.redirect('/login/')
     }
+
 
     let student = {}
     if (req.body.name) {
@@ -67,9 +70,7 @@ router.put("/student/editData", async(req, res) => {
     if (req.body.email) {
         student.email = req.body.email
     }
-    // if (req.body.password) {
-    //     student.password = req.body.password
-    // }
+
     if (req.body.phone) {
         student.phone = req.body.phone
     }
@@ -77,8 +78,15 @@ router.put("/student/editData", async(req, res) => {
         student.cvLink = req.body.cvLink
     }
 
-    Student.findByIdAndUpdate(studentId, student).exec()
+    Student.findByIdAndUpdate(userId, student).exec()
     res.send("done")
 })
+
+
+router.get('/studentsList', (req, res) => {
+    if (req.session.userId == undefined)
+        return res.redirect('/login/')
+})
+
 
 module.exports = router

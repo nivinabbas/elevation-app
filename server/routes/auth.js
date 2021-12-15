@@ -2,8 +2,6 @@ const router = require('express').Router()
 const {Student} = require('../models/StudentUser')
 const {Admin} = require('../models/AdminUser')
 const path = require('path')
-const {checkLoggedIn} = require('./Utils')
-
 
 router.get(['/login', '/register'], (req, res) => {
     if(req.session.role != undefined)

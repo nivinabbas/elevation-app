@@ -15,6 +15,12 @@ router.get('/suggested/:company/:title', (req, res) => {
     getJobsByTitleCompany(req.params.company, req.params.title).then(data => res.send(data))
 })
 
+router.get('/studentProcesses', async (req, res) => {
+    const data = await RecruitmentProcess.find({appliedStudent: req.session.userId}, '-_id -appliedStudent -__v')
+    .populate({path: 'job', select: '-_id -recruitmentProcesses -__v'}).exec()
+    res.send(data)
+})
+
 
 router.post('/process', async (req, res) => {
     if(req.session.role == undefined)
