@@ -2,7 +2,7 @@
 /*        cards       */
 .column {
   float: left;
-  width: 33%;
+  width: 25%;
   padding: 0 10px;
 }
 .card {
@@ -13,7 +13,7 @@
   background-color: #f8c1cb;
   border-radius: 16px;
   margin-top: 10px;
-  margin-bottom: 3%;
+  margin-bottom: 8%;
 }
 
 /*******************NAVBAR***************************/
@@ -36,12 +36,12 @@ html {
   body {
     font-family: Arial, Helvetica, sans-serif;
   margin: 0 ;
-  /* display: flex ; */
+ 
    /* overflow: hidden ;  */
   align-items: center ;
   justify-content: center ; 
-  background: -webkit-linear-gradient(to left, #ffffff, #eea3b1);  
-  background: linear-gradient(to left, #ffffff, #eea3b1); 
+  background: -webkit-linear-gradient(to left, #e58c8a, #eec0c6);  
+  background: linear-gradient(to left, #e58c8a, #eec0c6); 
   font-family: 'Dosis', sans-serif ;
   }
   
@@ -130,47 +130,90 @@ html {
 
 /**********************************************/
 /*Fadi*/
+
 #students {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); 
-  grid-template-rows: auto; 
-  margin: 10px;
-  padding-top: 150px;
-  border-radius: 30px;
- 
-}
-
+  grid-template-rows: repeat(3,1fr);
+  grid-template-columns: repeat(3,1fr);
+   margin: 10px;
+   padding-top: 150px;
+   border-radius: 30px;
+   justify-content: center;
+   
+   
+  
+ }
 #students .student {
   display: grid;
-  width: 97.5%;
-  grid-template-rows: 1fr 2fr;
+  width: 50%;
+  margin-left: 16%;
+  align-items: center;
+  grid-template-rows: 1fr;
   border-radius: 16px;
   max-height: fit-content;
   background-color: #f1f1f1;
-  margin-left: 1%;
   margin-bottom: 3%;
   box-shadow: 5px 5px 10px 2px rgba(0, 0, 0, 0.8);
   color: #0F213A;
 
 }
 
+
 #students .student .name {
-  text-align: center;
-  margin: auto;
+  
+  margin-left:2%;
 }
 
 #students .student .proc-st {
   display: grid;
   grid-template-columns: 3fr 1fr;
   grid-template-rows: auto;
+  margin-left: 5%;
 }
 
-#students .student .proc-st .process {
-  margin-left: 20px;
-}
 
 #students .student .proc-st .process div {
-  margin-left: 20px;
+  
   box-shadow: 5px 5px 10px 2px #0F213A;
   width: 40%;
+}
+
+
+/* pop up style process*/
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
 }
