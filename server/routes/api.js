@@ -48,6 +48,7 @@ router.get("/student/profile", async(req, res) => {
         res.status(401).send("Please Login First")
         return null
     }
+
     const studentData = await Student.findById(studentId)
     res.json(studentData)
 })
