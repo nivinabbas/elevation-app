@@ -3,7 +3,7 @@ let data = new dataOfCards();
 async function loadPage() {
   await data.getDataFromDB();
   console.log(data.dataOfCards);
-  
+
   $('.dataCard1').text(data.dataOfCards[0]);
   $('.dataCard4').text(data.dataOfCards[2] - data.dataOfCards[0]);
   $('.dataCard2').text(data.dataOfCards[1]);
@@ -67,23 +67,27 @@ updateButton.addEventListener('click', function onOpen() {
   }
 });
 
-confirmBtn.addEventListener('click', function onOpen() {
+confirmBtn.addEventListener('click',async function onOpen() {
   var selectEl = document.querySelector('select');
+  var dataOfNameStudents = await data.getDataAboutStudent();
   var inputName = $('.name').val();
   var inputTitle = $('.jobTitle').val();
   var inputDescription = $('.description').val();
   var inputJobLink = $('.jobLink').val();
+  var inputNameStudent=$('.nameStudent').val();
   let inputs = {
+    name: dataOfNameStudents.map(o=>{
+
+return o.name;
+    }),
     company: inputName,
     title: inputTitle,
     description: inputDescription,
     jobLink: inputJobLink,
     stage: selectEl.value,
   };
- 
+  console.log(inputs);
   data.saveDataOfProcess(inputs);
-  data.getDataAboutStudent();
-  console.log(data);
 });
 // "Favorite animal" input sets the value of the submit button
 selectEl.addEventListener('change', function onSelect(e) {
