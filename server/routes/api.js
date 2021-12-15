@@ -1,8 +1,15 @@
 const express = require('express')
 const router = express.Router()
 const Job = require("../models/Job")
-const {Student, studentsDetails} = require("../models/StudentUser")
+const { Student, studentsDetails } = require("../models/StudentUser")
 const path = require('path');
+
+
+router.get('/', (req ,res, next) => {
+    if(req.session.role == undefined)
+        return res.redirect('/login/')
+    return res.sendFile(path.join(__dirname, '../', '../', 'dist', 'dashboard', 'index.html'))
+})
 
 router.get("/jobs", function(req, res) {
     Job.find({}, function(err, result) {
@@ -16,27 +23,33 @@ router.get('/dataOfCards', (req, res) => {
 })
 
 
-router.get('/studentsDetails',  async (req, res) => {
+router.get('/studentsDetails', async(req, res) => {
 
     const filter = {}
-    if(req.query.email)
+    if (req.query.email)
         filter.email = req.query.email
-    if(req.query.currentStatus)
+    if (req.query.currentStatus)
         filter.currentStatus = req.query.currentStatus
-    if(req.query.name)
-        filter.name = {$regex: req.query.name, $options: 'i'}
+    if (req.query.name)
+        filter.name = { $regex: req.query.name, $options: 'i' }
     const students = await Student.find(filter, 'name email currentStatus recruitmentProcesses')
-    .populate({path: 'recruitmentProcesses', 
-    select: '-appliedStudent', populate: {path: 'job', select: 'company title -_id'}}).exec()
+        .populate({
+            path: 'recruitmentProcesses',
+            select: '-appliedStudent',
+            populate: { path: 'job', select: 'company title -_id' }
+        }).exec()
+
     res.send(students)
 })
 
-
-router.get('/login', (req, res) => {
-    if(req.session.role != undefined)
-        return res.redirect('/')
-    res.sendFile(path.join(__dirname, '../', '../', 'dist', 'login', 'index.html'))
+router.get("/student/profile", async(req, res) => {
+    const studentId = req.session.studentId
+    if (!studentId) {
+        res.statusCode(401).send("Please Login First")
+        return null
+    }
+    const studentData = await Student.findById(studentId)
+    res.json(studentData)
 })
-
 
 module.exports = router

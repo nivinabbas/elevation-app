@@ -4,6 +4,7 @@ const renderer = new Renderer()
 
 $(document).ready(async function () {
     await dataModel.getStudents()
+    console.log(dataModel.students)
     renderer.renderData(dataModel.students)
 })
 

@@ -16,14 +16,14 @@
     <input type="checkbox" id="flip">
     <div class="cover">
       <div class="front">
-        <img src="images/elevationLogo.jpg" alt="">
+        <img src="../images/elevationLogo.jpg" alt="">
         <div class="text">
           <span class="text-1">Every new friend is a <br> new adventure</span>
           <span class="text-2">Let's get connected</span>
         </div>
       </div>
       <div class="back">
-        <img class="backImg" src="images/backImg.jpg" alt="">
+        <img class="backImg" src="../images/backImg.jpg" alt="">
         <div class="text">
           <span class="text-1">Complete miles of journey <br> with one step</span>
           <span class="text-2">Let's get started</span>
@@ -53,20 +53,21 @@
         </form>
       </div>
         <div class="signup-form">
+          <div class="error"></div>
           <div class="title">Signup</div>
-        <form action="#">
+        <form id="register-form" action="/register" method="post">
             <div class="input-boxes">
               <div class="input-box">
                 <i class="fas fa-user"></i>
-                <input type="text" placeholder="Enter your name" required>
+                <input name="name" type="text" placeholder="Enter your name" required>
               </div>
               <div class="input-box">
                 <i class="fas fa-envelope"></i>
-                <input type="text" placeholder="Enter your email" required>
+                <input name="email" type="email" placeholder="Enter your email" required>
               </div>
               <div class="input-box">
                 <i class="fas fa-lock"></i>
-                <input type="password" placeholder="Enter your password" required>
+                <input name="password" minlength="6" type="password" placeholder="Enter your password" required>
               </div>
               <div class="button input-box">
                 <input type="submit" value="Sumbit">

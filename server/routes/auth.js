@@ -4,9 +4,15 @@ const {Admin} = require('../models/AdminUser')
 const path = require('path')
 
 
-router.post('/register', (req, res) => {
+router.get(['/login', '/register'], (req, res) => {
+    if(req.session.role != undefined)
+        return res.redirect('/')
+    res.sendFile(path.join(__dirname, '../', '../', 'dist', 'login', 'index.html'))
+})
 
-    const emailExits = () => res.status(409).send('Email already exists!')
+
+router.post('/register', (req, res) => {
+    const emailExits = () => res.status(409).json('Email already exists!')
 
     Admin.findOne({email: req.body.email}).exec()
         .then(data => {
@@ -31,8 +37,8 @@ router.post('/register', (req, res) => {
                             msg = "Incorrect email!"
                         else if(err.errors['name'])
                             msg = "Name is required!"
-                        else if(err.errors['currentStatus'])
-                            msg = "Employement status is required!"
+                        // else if(err.errors['currentStatus'])
+                        //     msg = "Employement status is required!"
                         res.status(400).json(msg)
                     }
                     else
@@ -43,6 +49,7 @@ router.post('/register', (req, res) => {
 })
 
 
+
 router.post('/login', (req, res) => {
     const wrongDetails = () => res.status(401).json('Incorrect email or password!')
     Student.findOne({email: req.body.email}).exec().then(student => {
@@ -51,7 +58,6 @@ router.post('/login', (req, res) => {
                 if(admin == null || !admin.validPassword(req.body.password))
                     return wrongDetails()
                 req.session.role = 2;
-                console.log(req.session.role)
                 return res.send('Logged in as admin!')
             })
         }

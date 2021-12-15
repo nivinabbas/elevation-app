@@ -3,7 +3,7 @@ const userSchema = require('./User')
 
 const studentUserSchema = new mongoose.Schema({
     cvLink: String,
-    currentStatus: { type: Number, required: true },
+    currentStatus: Number, //{ type: Number, required: true },
     recruitmentProcesses: [{ type: mongoose.Types.ObjectId, ref: 'RecruitmentProcess' }]
 }).add(userSchema)
 
