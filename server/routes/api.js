@@ -4,6 +4,13 @@ const Job = require("../models/Job")
 const {Student, studentsDetails} = require("../models/StudentUser")
 const path = require('path');
 
+
+router.get('/', (req ,res, next) => {
+    if(req.session.role == undefined)
+        return res.redirect('/login/')
+    next()
+})
+
 router.get("/jobs", function(req, res) {
     Job.find({}, function(err, result) {
         res.send(result)
