@@ -17,8 +17,6 @@ const app = express();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-app.use(express.static(path.join(__dirname, "dist")));
-app.use(express.static(path.join(__dirname, "node_modules")));
 
 app.use(
   session({
@@ -29,8 +27,11 @@ app.use(
 );
 
 app.use("/", api);
-app.use("/auth", auth);
+app.use("/", auth);
 app.use("/jobs", jobs);
+
+app.use(express.static(path.join(__dirname, "dist")));
+app.use(express.static(path.join(__dirname, "node_modules")));
 
 const port = 8888;
 

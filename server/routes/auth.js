@@ -1,6 +1,7 @@
 const router = require('express').Router()
 const {Student} = require('../models/StudentUser')
 const {Admin} = require('../models/AdminUser')
+const path = require('path')
 
 
 router.post('/register', (req, res) => {
@@ -32,7 +33,7 @@ router.post('/register', (req, res) => {
                             msg = "Name is required!"
                         else if(err.errors['currentStatus'])
                             msg = "Employement status is required!"
-                        res.status(400).send(msg)
+                        res.status(400).json(msg)
                     }
                     else
                         emailExits()
@@ -43,7 +44,7 @@ router.post('/register', (req, res) => {
 
 
 router.post('/login', (req, res) => {
-    const wrongDetails = () => res.status(401).send('Incorrect email or password!')
+    const wrongDetails = () => res.status(401).json('Incorrect email or password!')
     Student.findOne({email: req.body.email}).exec().then(student => {
         if(student == null) {
             Admin.findOne({email: req.body.email}).exec().then(admin => {

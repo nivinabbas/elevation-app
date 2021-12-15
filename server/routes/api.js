@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const Job = require("../models/Job")
 const {Student, studentsDetails} = require("../models/StudentUser")
+const path = require('path');
 
 router.get("/jobs", function (req, res) {
     Job.find({}, function (err, result) {
@@ -29,5 +30,13 @@ router.get('/studentsDetails',  async (req, res) => {
     select: '-appliedStudent', populate: {path: 'job', select: 'company title -_id'}}).exec()
     res.send(students)
 })
+
+
+router.get('/login', (req, res) => {
+    if(req.session.role != undefined)
+        return res.redirect('/')
+    res.sendFile(path.join(__dirname, '../', '../', 'dist', 'login', 'index.html'))
+})
+
 
 module.exports = router

@@ -14,6 +14,10 @@ body {
   background: #ff96aa;
   padding: 30px;
 }
+.error {
+  color: red;
+  display: none;
+}
 .title {
   color: #ff96aa;
 }
