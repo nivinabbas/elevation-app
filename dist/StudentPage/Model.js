@@ -3,72 +3,79 @@ class StudentModel {
         this.studentJobs
     }
 
-    getJobs() {
-        this.studentJobs = [{
-                    title: "full stack",
-                    description: `abc asd asd asd   asddddddddddddddd asd ddddddddddddd aaaaaaaaaaa rrrrrr
-            gggggggggggggggg asdddasssssssssss asdqweqweqwe gggggggggg ppppppppppppp `,
-                    status: "rejected",
-                    phone: "0543174067",
-                    email: "fadi.1997.id@gmail.com"
-                },
-                {
-                    title: "backend",
-                    description: `abc asd asd asd   asddddddddddddddd asd ddddddddddddd aaaaaaaaaaa rrrrrr
-            gggggggggggggggg asdddasssssssssss asdqweqweqwe gggggggggg ppppppppppppp `,
-                    status: "rejected",
-                    phone: "0543174067",
-                    email: "fadi.1997.id@gmail.com"
-                },
-                {
-                    title: "frontend",
-                    description: `abc asd asd asd   asddddddddddddddd asd ddddddddddddd aaaaaaaaaaa rrrrrr
-            gggggggggggggggg asdddasssssssssss asdqweqweqwe gggggggggg ppppppppppppp `,
-                    status: "rejected",
-                    phone: "0543174067",
-                    email: "fadi.1997.id@gmail.com"
-                },
-                {
-                    title: "backend",
-                    description: `abc asd asd asd   asddddddddddddddd asd ddddddddddddd aaaaaaaaaaa rrrrrr
-            gggggggggggggggg asdddasssssssssss asdqweqweqwe gggggggggg ppppppppppppp `,
-                    status: "rejected",
-                    phone: "0543174067",
-                    email: "fadi.1997.id@gmail.com"
-                },
-                {
-                    title: "full stack",
-                    description: `abc asd asd asd   asddddddddddddddd asd ddddddddddddd aaaaaaaaaaa rrrrrr
-            gggggggggggggggg asdddasssssssssss asdqweqweqwe gggggggggg ppppppppppppp `,
-                    status: "rejected",
-                    phone: "0543174067",
-                    email: "fadi.1997.id@gmail.com"
-                },
-                {
-                    title: "full stack",
-                    description: `abc asd asd asd   asddddddddddddddd asd ddddddddddddd aaaaaaaaaaa rrrrrr
-            gggggggggggggggg asdddasssssssssss asdqweqweqwe gggggggggg ppppppppppppp `,
-                    status: "rejected",
-                    phone: "0543174067",
-                    email: "fadi.1997.id@gmail.com"
-                },
-                {
-                    title: "backend",
-                    description: "abc",
-                    status: "in progress",
-                    phone: "0543174067",
-                    email: "fadi.1997.id@gmail.com"
-                }
-            ]
-            // $.ajax({
-            //     method: `GET`,
-            //     url: `/student/jobs`,
-            //     success: function(result) {
-            //         this.studentJobs = result
-            //     },
-            //     error: function(xhr, text, err) {
+    async getJobs() {
 
-        //     }
-        // })
+        const STAGES = {
+            '-1': 'Declined',
+            0: 'No process',
+            1: 'Applied',
+            2: 'Positive feedback',
+            3: 'Technical intreview',
+            4: 'HR intreview',
+            5: 'Employeed'
+        }
+
+        this.studentJobs = (await $.get('/jobs/studentProcesses')).map(o => {
+            o.stage = STAGES[o.stage]
+            return o
+        })
     }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// [
+//     {
+//         "job": {
+//             "company": "Apple",
+//             "title": "Sales Manager"
+//         },
+//         "stage": -1,
+//         "questions": []
+//     }
+// ]
+
+
+//     $.ajax({
+    //         method: `GET`,
+    //         url: `http://localhost:8888/jobs/studentProcesses`,
+    //         success: function (result) {
+    //             console.log(result);
+    //             this.studentJobs = result
+    //         },
+    //         error: function (xhr, text, err) {
+    //             console.log("Error");
+    //         }
+    //     })
