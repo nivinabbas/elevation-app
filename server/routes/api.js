@@ -8,7 +8,7 @@ const path = require('path');
 router.get('/', (req ,res, next) => {
     if(req.session.role == undefined)
         return res.redirect('/login/')
-    next()
+    return res.sendFile(path.join(__dirname, '../', '../', 'dist', 'dashboard', 'index.html'))
 })
 
 router.get("/jobs", function(req, res) {
@@ -38,6 +38,7 @@ router.get('/studentsDetails', async(req, res) => {
             select: '-appliedStudent',
             populate: { path: 'job', select: 'company title -_id' }
         }).exec()
+
     res.send(students)
 })
 
