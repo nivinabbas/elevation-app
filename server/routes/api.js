@@ -50,12 +50,16 @@ router.get("/studentSettings", (req, res) => {
 })
 
 router.get("/student/profile", async(req, res) => {
-    if (req.session.userId == undefined)
-        return res.status(401).send("Please Login First")
-    res.json(await Student.findById(req.session.userId, '-password -_id'))
+    if (req.session.userId == undefined) {
+        return res.redirect('/login/')
+    }
+
+    const studentData = await Student.findById(req.session.userId)
+    res.json(studentData)
 })
 
 router.put("/student/editData", async(req, res) => {
+    
     const userId = req.session.userId
 
     if (req.session.userId == undefined) {
@@ -83,9 +87,10 @@ router.put("/student/editData", async(req, res) => {
 })
 
 
-router.get('/studentsList', (req, res) => {
+router.get('/studentsList', async(req, res) => {
     if (req.session.userId == undefined)
         return res.redirect('/login/')
+    res.json(await Student.find({}, '_id name'))
 })
 
 
