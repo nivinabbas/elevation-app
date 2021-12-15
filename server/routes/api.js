@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const Job = require("../models/Job")
 const { Student, studentsDetails } = require("../models/StudentUser")
+const path = require('path');
 
 router.get("/jobs", function(req, res) {
     Job.find({}, function(err, result) {
