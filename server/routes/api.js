@@ -54,7 +54,8 @@ router.get("/student/profile", async(req, res) => {
         return res.redirect('/login/')
     }
 
-    const studentData = await Student.findById(req.session.userId)
+    const studentData = await Student.findById(req.session.userId, '-__v -password -salt')
+    .populate({path: 'recruitmentProcesses', select: '-appliedStudent -__v', populate: {path: 'job', select: '-recruitmentProcesses -__v'}}).exec()
     res.json(studentData)
 })
 

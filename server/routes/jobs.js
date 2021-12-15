@@ -4,21 +4,26 @@ const {Student} = require('../models/StudentUser')
 const {Job, getJobsByTitleCompany} = require('../models/Job')
 const {RecruitmentProcess} = require('../models/RecruitmentProcess')
 
-router.get("/", function(req, res) {
-    Job.find({}, function(err, result) {
-        res.send(result)
-    })
-})
-
 
 router.get('/suggested/:company/:title', (req, res) => {
     getJobsByTitleCompany(req.params.company, req.params.title).then(data => res.send(data))
 })
 
 router.get('/studentProcesses', async (req, res) => {
-    const data = await RecruitmentProcess.find({appliedStudent: req.session.userId}, '-_id -appliedStudent -__v')
-    .populate({path: 'job', select: '-_id -recruitmentProcesses -__v'}).exec()
-    res.send(data)
+    const jobFilter = {}
+    if(req.query.company)
+        jobFilter['company'] = {$regex: req.query.company, $options: 'i'}
+    if(req.query.title)
+        jobFilter['title']= {$regex: req.query.title, $options: 'i'}
+
+    const stageFilter = {}
+    if(req.query.stage)
+        stageFilter.stage = req.query.stage
+
+    const data = (await RecruitmentProcess.find({appliedStudent: req.session.userId, ...stageFilter},
+         '-_id -appliedStudent -__v').populate({path: 'job', match: jobFilter,
+         select: '-_id -recruitmentProcesses -__v'}).exec()).filter(p => p.job != null)
+    res.json({name: (await Student.findById(req.session.userId).exec())?.name, processes: data})
 })
 
 
