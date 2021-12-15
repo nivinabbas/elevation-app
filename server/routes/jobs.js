@@ -16,11 +16,11 @@ router.get('/suggested/:company/:title', (req, res) => {
 })
 
 
-router.post('/add', async (req, res) => {
+router.post('/process', async (req, res) => {
     if(req.session.role == undefined)
         return res.send('Not logged in')
 
-    const student = await Student.findById(req.session.studentId).exec()
+    const student = await Student.findById(req.session.userId).exec()
     let job
     if(req.body.jobId == undefined) {
         job = new Job({company: req.body.company, title: req.body.title, decription: req.body.decription})
