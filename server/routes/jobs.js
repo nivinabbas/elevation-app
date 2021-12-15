@@ -26,7 +26,13 @@ router.post('/process', async (req, res) => {
     if(req.session.role == undefined)
         return res.send('Not logged in')
 
-    const student = await Student.findById(req.session.userId).exec()
+    let studentId
+    if(req.session.role == 2)
+        studentId = req.body.studentId
+    else
+        studentId = req.session.userId
+        
+    const student = await Student.findById(studentId).exec()
     let job
     if(req.body.jobId == undefined) {
         job = new Job({company: req.body.company, title: req.body.title, description: req.body.description})
