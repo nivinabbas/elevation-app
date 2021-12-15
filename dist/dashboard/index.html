@@ -79,7 +79,60 @@
       </div>
     </div>
 
-    <div id="students"></div>
+    <div id="students">
+      <div>
+        <dialog id="favDialog">
+          <form method="dialog">
+            <p>
+              <label
+                >name:
+              <input>
+              </label>
+            </p>
+            <p>
+              <label
+                >Stage:
+                <select>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </select>
+              </label>
+            </p>
+            <p>
+              <label
+                >Salary:
+                <input />
+              </label>
+            </p>
+            <p>
+              <label
+                >Job link:
+                <input />
+              </label>
+            </p>
+            <p>
+              <label
+                >Questions:
+                <input />
+              </label>
+            </p>
+            <menu>
+              <button value="cancel">Cancel</button>
+              <button id="confirmBtn" value="default">Confirm</button>
+            </menu>
+          </form>
+        </dialog>
+      </div>
+
+      <menu>
+        <button id="updateDetails">Add process</button>
+      </menu>
+
+      <output aria-live="polite"></output>
+    </div>
 
     <script id="student-template" type="text/x-handlebars">
 
@@ -89,7 +142,8 @@
 
             <div class = "name">
 
-                <h3>{{name}} <button class="addProcess">Add process </button> </h3>
+                <h3>{{name}}  </h3>
+
 
             </div>
 
