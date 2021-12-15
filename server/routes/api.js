@@ -5,8 +5,8 @@ const { Student, studentsDetails } = require("../models/StudentUser")
 const path = require('path');
 
 
-router.get('/', (req ,res, next) => {
-    if(req.session.role == undefined)
+router.get('/', (req, res, next) => {
+    if (req.session.role == undefined)
         return res.redirect('/login/')
     return res.sendFile(path.join(__dirname, '../', '../', 'dist', 'dashboard', 'index.html'))
 })
@@ -50,6 +50,35 @@ router.get("/student/profile", async(req, res) => {
     }
     const studentData = await Student.findById(studentId)
     res.json(studentData)
+})
+
+router.put("/student/editData", async(req, res) => {
+    const studentId = req.session.studentId
+
+    if (!studentId || !req.body) {
+        res.status(401)
+        return null
+    }
+
+    let student = {}
+    if (req.body.name) {
+        student.name = req.body.name
+    }
+    if (req.body.email) {
+        student.email = req.body.email
+    }
+    // if (req.body.password) {
+    //     student.password = req.body.password
+    // }
+    if (req.body.phone) {
+        student.phone = req.body.phone
+    }
+    if (req.body.cvLink) {
+        student.cvLink = req.body.cvLink
+    }
+
+    Student.findByIdAndUpdate(studentId, student).exec()
+    res.send("done")
 })
 
 module.exports = router

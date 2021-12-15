@@ -12,4 +12,4 @@ class Renderer {
     }
 }
 
-module.exports = Renderer
+// module.exports = Renderer

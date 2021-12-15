@@ -8,6 +8,9 @@ class dataOfCards {
         console.log('qweqzzzwe')
       };
 
+      saveDataOfProcess(process) {
+        $.post('/process', process, function (res) {});
+      }
      
 }
 
