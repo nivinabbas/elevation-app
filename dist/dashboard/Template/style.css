@@ -1,0 +1,66 @@
+#nav-container {
+  display: grid;
+  background-color: #0f213a;
+  /*#0f213a;*/
+  grid-template-columns: repeat(2, 1fr);
+  padding-right: 15px;
+  padding-left: 15px;
+  border-radius: 5px;
+  color: #ffa4b2;
+}
+/***********************************************/
+.main-items {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.nav-item {
+  display: grid;
+  align-content: center;
+  /* color: #ecf0f1; */
+  height: 100%;
+}
+.logo-container {
+  display: grid;
+  justify-content: end;
+}
+
+#container {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(7, 1fr);
+  grid-template-areas:
+    "h h h h h h"
+    "s s m m m m"
+    "s s m m m m"
+    "s s m m m m"
+    "s s m m m m"
+    "s s m m m m"
+    "f f f f f f";
+}
+.head {
+  grid-area: h;
+  background-color: #f1f2f6;
+  margin: 10px;
+  color: pink;
+}
+
+.side-nav {
+  grid-area: s;
+  background-color: #f1f2f6;
+  margin: 10px;
+  color: pink;
+}
+
+.main {
+  grid-area: m;
+  background-color: #f1f2f6;
+  margin: 10px;
+  color: pink;
+}
+
+.foot {
+  grid-area: f;
+  background-color: #0f213a;
+  margin: 10px;
+}
