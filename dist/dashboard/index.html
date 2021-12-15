@@ -27,7 +27,24 @@
     <title>Dashboard</title>
   </head>
   <body>
-    <menu class="menu">
+    <div id="nav-container">
+      <div class="main-items">
+        <div class="nav-item"><h2>Home</h2></div>
+        <div class="nav-item"><h2>Jobs</h2></div>
+        <div class="nav-item"><h2>Students</h2></div>
+      </div>
+      <div class="nav-item logo-container">
+        <p>Elevation</p>
+
+        <img
+          src="https://elevation.ac/wp-content/uploads/2020/10/symbol.png"
+          alt="Girl in a jacket"
+          width="50"
+          height="50"
+        />
+      </div>
+    </div>
+    <!-- <menu class="menu">
       <button class="menu__item active">
         <div class="menu__icon">
           <i class="fas fa-home"></i>
@@ -46,83 +63,89 @@
         </div>
         <strong class="menu__text"> Jobs</strong>
       </button>
-    </menu>
+    </menu> -->
+    <div id="container">
+      <div class="head">
+        <h3>CARDS</h3>
+        <div class="cards">
+          <div class="row">
+            <div class="column">
+              <div class="card">
+                <h5>Employed Student</h5>
+                <p class="dataCard1">5</p>
+              </div>
+            </div>
+            <div class="column">
+              <div class="card">
+                <h5>Unemployed Student</h5>
+                <p class="dataCard4">5</p>
+              </div>
+            </div>
 
-    <div class="cards">
-      <div class="row">
-        <div class="column">
-          <div class="card">
-            <h5>Student/s work</h5>
-            <p class="dataCard1">5</p>
-          </div>
-        </div>
-        <div class="column">
-          <div class="card">
-            <h5>Student/s Not work</h5>
-            <p class="dataCard4">5</p>
-          </div>
-        </div>
+            <div class="column">
+              <div class="card">
+                <h5>Students in progress</h5>
+                <p class="dataCard2">100</p>
+              </div>
+            </div>
 
-        <div class="column">
-          <div class="card">
-            <h5>Students in progress</h5>
-            <p class="dataCard2">100</p>
-          </div>
-        </div>
-
-        <div class="column">
-          <div class="card">
-            <h5>Total students</h5>
-            <p class="dataCard3">60</p>
+            <div class="column">
+              <div class="card">
+                <h5>Total students</h5>
+                <p class="dataCard3">60</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div id="students">
+      <div class="main">
+        <h3>LIST</h3>
+        <div id="students"></div>
+      </div>
+
       <div>
         <dialog id="favDialog">
           <form method="dialog">
             <p>
               <label
                 >Name of Student:
-                <select id="student-name">
-                </select>
+                <select id="student-name"></select>
               </label>
             </p>
             <p>
               <label
-               >Company name:
-              <input class="name">
+                >Company name:
+                <input class="name" />
               </label>
             </p>
             <p>
               <label
                 >Stage:
                 <select id="stage">
-                  <option value='1'>1</option>
-                  <option value='2'>2</option>
-                  <option value='3'>3</option>
-                  <option value='4'>4</option>
-                  <option value='5'>5</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
                 </select>
               </label>
             </p>
             <p>
               <label
                 >Job Title:
-                <input class="jobTitle"/>
+                <input class="jobTitle" />
               </label>
             </p>
             <p>
               <label
                 >Job link:
-                <input class="jobLink"/>
+                <input class="jobLink" />
               </label>
             </p>
             <p>
               <label
                 >Description:
-                <input class="description"/>
+                <input class="description" />
               </label>
             </p>
             <menu>
@@ -132,14 +155,17 @@
           </form>
         </dialog>
       </div>
+      <div class="side-nav">
+        <h3>Let's add process to student</h3>
 
-      <menu>
-        <button id="updateDetails">Add process</button>
-      </menu>
+        <menu>
+          <button id="updateDetails">Add process</button>
+        </menu>
 
-      <output aria-live="polite"></output>
+        <output aria-live="polite"></output>
+      </div>
+      <div class="foot"></div>
     </div>
-
     <script id="student-template" type="text/x-handlebars">
 
       {{#each students}}
