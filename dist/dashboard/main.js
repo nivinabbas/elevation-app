@@ -7,6 +7,18 @@ async function loadPage() {
   $('.dataCard4').text(data.dataOfCards[2] - data.dataOfCards[0]);
   $('.dataCard2').text(data.dataOfCards[1]);
   $('.dataCard3').text(data.dataOfCards[2]);
+  await data.getDataAboutStudent()
+  console.log(data.studentsData)
+  if(data.studentsData.isUser == true)
+  {
+    $('#cards').hide()
+    $('#studentName').hide()
+  }
+
+  else {
+    const selectEl = $('#student-name')
+    data.studentsData.forEach(student => selectEl.append($(`<option value='${student._id}'>${student.name}</option>`)))
+  }
 }
 
 loadPage();
@@ -61,9 +73,6 @@ var confirmBtn = document.getElementById('confirmBtn');
 updateButton.addEventListener('click', async function onOpen() {
 
   if (typeof favDialog.showModal === 'function') {
-    const students = await data.getDataAboutStudent();
-    const selectEl = $('#student-name')
-    students.forEach(student => selectEl.append($(`<option value='${student._id}'>${student.name}</option>`)))
     favDialog.showModal();
   } else {
     alert('The <dialog> API is not supported by this browser');
@@ -83,7 +92,9 @@ confirmBtn.addEventListener('click',async function onOpen() {
     jobLink: inputJobLink,
     stage: $('#stage').val(),
   };
-  data.saveDataOfProcess(inputs);
+  await data.saveDataOfProcess(inputs);
+  location.reload();
+  
 });
 // "Favorite animal" input sets the value of the submit button
 selectEl.addEventListener('change', function onSelect(e) {

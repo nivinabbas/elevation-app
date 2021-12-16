@@ -1,6 +1,7 @@
 class dataOfCards {
   constructor() {
     this.dataOfCards = [];
+    this.studentsData = []
   }
 
   getDataFromDB = async function () {
@@ -8,10 +9,10 @@ class dataOfCards {
   };
 
   saveDataOfProcess(process) {
-    $.post('/jobs/process', process, function (res) {});
+    return $.post('/jobs/process', process, function (res) {});
   }
 
-  getDataAboutStudent = function () {
-    return $.get('studentsList');;
+  getDataAboutStudent = async function () {
+    this.studentsData = await $.get('studentsList')
   };
 }
