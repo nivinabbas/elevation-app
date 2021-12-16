@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="/dashboard/style.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+      integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@800&display=swap"
+    />
+    <title>Dashboard</title>
+  </head>
+  <body>
+    <div id="nav-container">
+      <div class="main-items">
+        <div class="nav-item"><h2>Home</h2></div>
+        <div class="nav-item"><h2>Jobs</h2></div>
+        <div class="nav-item"><h2>Students</h2></div>
+      </div>
+      <div class="nav-item logo-container">
+        <p>Elevation</p>
+
+        <img
+          src="https://elevation.ac/wp-content/uploads/2020/10/symbol.png"
+          alt="Girl in a jacket"
+          width="50"
+          height="50"
+        />
+      </div>
+    </div>
+
+    <div id="container">
+      <div class="main">
+        <h3>LIST</h3>
+        <div id="students"></div>
+      </div>
+
+     
+      
+      <div class="foot"></div>
+    </div>
+    <script id="student-template" type="text/x-handlebars">
+
+      {{#each students}}
+
+        <div class = "student">
+
+            <div class = "name">
+
+                <h3>{{name}}  </h3>
+
+
+            </div>
+
+            <div class="proc-st">
+
+                <div class="process">
+
+                    <h4>  process/es {{processNum}} :</h4>
+
+                    {{#each recruitmentProcesses}}
+                        <li>{{job.title}} at {{job.company}}    -   <b>{{stage}}<b></li>
+                    {{/each}}
+                        </div>
+
+                <div class= "status">
+                    <p>Status: </p>
+                     <h6>{{currentStatus}}</h6>
+                     <h3>Email: <b>{{email}}</b></h3>
+                </div>
+
+            </div>
+
+        </div>
+        {{/each}}
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <script src="/dashboard/Card/card.js"></script>
+    <script src="/Table/table.js"></script>
+    <script src="/dashboard/Table/Model.js"></script>
+    <script src="/dashboard/Table/View.js"></script>
+    <script src="/dashboard/Table/Controller.js"></script>
+    <script src="/dashboard/main.js"></script>
+  </body>
+</html>

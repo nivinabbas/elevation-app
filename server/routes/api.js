@@ -16,6 +16,10 @@ router.get("/jobs", function(req, res) {
         res.send(result)
     })
 })
+router.get('/adminStudents', (req ,res, next) => {
+   
+    return res.sendFile(path.join(__dirname, '../', '../', 'dist', 'studentDetails', 'index.html'))
+})
 
 
 router.get('/dataOfCards', (req, res) => {
@@ -40,6 +44,7 @@ router.get('/studentsDetails', async(req, res) => {
         }).exec()
 
     res.send(students)
+    
 })
 
 
