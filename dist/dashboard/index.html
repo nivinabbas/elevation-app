@@ -65,7 +65,7 @@
       </button>
     </menu> -->
     <div id="container">
-      <div class="head">
+      <div id="cards" class="head">
         <h3>CARDS</h3>
         <div class="cards">
           <div class="row">
@@ -98,6 +98,7 @@
           </div>
         </div>
       </div>
+
       <div class="main">
         <h3>LIST</h3>
         <div id="students"></div>
@@ -106,7 +107,7 @@
       <div>
         <dialog id="favDialog">
           <form method="dialog">
-            <p>
+            <p id="studentName">
               <label
                 >Name of Student:
                 <select id="student-name"></select>
@@ -122,11 +123,11 @@
               <label
                 >Stage:
                 <select id="stage">
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
+                  <option value="1">Applied</option>
+                  <option value="2">Positive feedback</option>
+                  <option value="3">Technical intreview</option>
+                  <option value="4">HR intreview</option>
+                  <option value="5">Employeed</option>
                 </select>
               </label>
             </p>

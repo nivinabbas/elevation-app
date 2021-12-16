@@ -29,13 +29,20 @@ router.get('/dataOfCards', (req, res) => {
 
 router.get('/studentsDetails', async(req, res) => {
 
+    if(req.session.role == undefined)
+        return res.redirect('/login/')
+
     const filter = {}
-    if (req.query.email)
-        filter.email = req.query.email
-    if (req.query.currentStatus)
-        filter.currentStatus = req.query.currentStatus
-    if (req.query.name)
-        filter.name = { $regex: req.query.name, $options: 'i' }
+    if(req.session.role == 1)
+        filter._id = req.session.userId
+    else {
+        if (req.query.email)
+            filter.email = req.query.email
+        if (req.query.currentStatus)
+            filter.currentStatus = req.query.currentStatus
+        if (req.query.name)
+            filter.name = { $regex: req.query.name, $options: 'i' }
+    }
     const students = await Student.find(filter, 'name email currentStatus recruitmentProcesses')
         .populate({
             path: 'recruitmentProcesses',
@@ -96,6 +103,9 @@ router.put("/student/editData", async(req, res) => {
 router.get('/studentsList', async(req, res) => {
     if (req.session.userId == undefined)
         return res.redirect('/login/')
+    if(req.session.role == 1)
+        return res.json({isUser: true})
+
     res.json(await Student.find({}, '_id name'))
 })
 
