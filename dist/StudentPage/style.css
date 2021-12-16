@@ -30,3 +30,26 @@ body{
     text-align: center; 
     margin: auto;
 }
+
+.filter , .Processes{
+    background-color: #f1f1f1;
+    text-align: center;
+    height: 50px;
+    margin-bottom: 30px;
+}
+
+#filter{
+    text-align: center;
+    margin-bottom: 70px;
+}
+
+.Processes{
+    font-size: 150%;
+    font-weight: bold;
+}
+
+.Processes i{
+    position: absolute;
+    right: 20px;
+   padding-top: 10px;
+}

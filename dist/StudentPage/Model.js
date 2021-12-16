@@ -19,6 +19,7 @@ class StudentModel {
             o.stage = STAGES[o.stage]
             return o
         })
+        console.log(this.studentJobs);
     }
 
 }
