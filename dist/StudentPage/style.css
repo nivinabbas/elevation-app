@@ -8,54 +8,48 @@ body{
     border-radius: 30px;
 }
 
-/* @media (max-width: 600px) {
-    #jops {
-        grid-template-columns:  1fr;
-    }
-  } */
-
-
 
 #jobs .job {
     display: grid;
-    grid-template-columns: 3fr 20fr ;
+    grid-template-columns: 1fr 3fr ;
     border-radius: 30px;
     max-height: fit-content;
     background-color: #f1f1f1;
     margin: 10px;
     box-shadow: 5px 5px 10px 2px rgba(0,0,0,.8);
+   
 } 
 
+#jobs .job .description{
+    border-left: 1px solid  black;
+    margin-left: 10px;
+    text-align: center;
+}
 
 #jobs .job .title{
     text-align: center; 
     margin: auto;
 }
 
-#jobs .job .Characteristics{
-    display: grid;
-    grid-template-columns: 1fr 1fr ;
-    grid-template-rows: auto;
-    border-left: 2px solid black;
+.filter , .Processes{
+    background-color: #f1f1f1;
+    text-align: center;
+    height: 50px;
+    margin-bottom: 30px;
 }
 
-#jobs .job .Characteristics .description{
- margin-left: 20px;
+#filter{
+    text-align: center;
+    margin-bottom: 70px;
 }
 
-#jobs .job .Characteristics .st-ph-em{
-    display: grid;
-    grid-template-columns: 1fr 1fr ;
-    grid-template-rows: auto;
-    border-left: 1px solid black;
+.Processes{
+    font-size: 150%;
+    font-weight: bold;
 }
 
-#jobs .job .Characteristics .st-ph-em .contacts{
-    border-left: px solid black;
-    margin-left: 20px;
+.Processes i{
+    position: absolute;
+    right: 20px;
+   padding-top: 10px;
 }
-#jobs .job .Characteristics .st-ph-em .status{
-    border-left: px solid black;
-    margin-left: 20px;
-}
-
