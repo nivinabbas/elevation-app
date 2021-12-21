@@ -6,7 +6,7 @@ class ProfileModel {
     async getStudentrData() {
         await $.ajax({
             method: `GET`,
-            url: `/student/profile`,
+            url: `/students/profile`,
             success: (result) => {
                 this.studentData = result
             },
@@ -19,7 +19,7 @@ class ProfileModel {
     async editStudentData(student) {
         await $.ajax({
             method: `PUT`,
-            url: `/student/editData`,
+            url: `/students`,
             data: student,
             success: (result) => {
 

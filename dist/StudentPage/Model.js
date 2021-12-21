@@ -15,7 +15,7 @@ class StudentModel {
             5: 'Employeed'
         }
 
-        this.studentJobs = (await $.get('/jobs/studentProcesses')).map(o => {
+        this.studentJobs = (await $.get('/jobs/processes')).map(o => {
             o.stage = STAGES[o.stage]
             return o
         })

@@ -6,10 +6,15 @@ const {RecruitmentProcess} = require('../models/RecruitmentProcess')
 
 
 router.get('/suggested/:company/:title', (req, res) => {
+    if(req.session.role == undefined)
+        return res.redirect('/login/')
     getJobsByTitleCompany(req.params.company, req.params.title).then(data => res.send(data))
 })
 
-router.get('/studentProcesses', async (req, res) => {
+router.get('/processes', async (req, res) => {
+    if(req.session.role == undefined)
+        return res.redirect('/login/')        
+
     const jobFilter = {}
     if(req.query.company)
         jobFilter['company'] = {$regex: req.query.company, $options: 'i'}
@@ -29,7 +34,7 @@ router.get('/studentProcesses', async (req, res) => {
 
 router.post('/process', async (req, res) => {
     if(req.session.role == undefined)
-        return res.send('Not logged in')
+        return res.redirect('/login/')
 
     let studentId
     if(req.session.role == 2)

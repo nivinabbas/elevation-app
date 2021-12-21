@@ -5,7 +5,7 @@ const { Student, studentsDetails } = require("../models/StudentUser")
 const path = require('path');
 
 
-router.get('/', (req ,res, next) => {
+router.get('/', (req ,res) => {
     if(req.session.role == undefined)
         return res.redirect('/login/')
     return res.sendFile(path.join(__dirname, '../', '../', 'dist', 'dashboard', 'index.html'))
@@ -16,18 +16,16 @@ router.get("/jobs", function(req, res) {
         res.send(result)
     })
 })
-router.get('/adminStudents', (req ,res, next) => {
-   
-    return res.sendFile(path.join(__dirname, '../', '../', 'dist', 'studentDetails', 'index.html'))
-})
 
 
-router.get('/dataOfCards', (req, res) => {
+router.get('/statistics', (req, res) => {
+    if(req.session.role != 2)
+        return res.status(403).send({msg: 'Admin privliges are needed'})
     studentsDetails().then(data => res.send(data))
 })
 
 
-router.get('/studentsDetails', async(req, res) => {
+router.get('/students', async(req, res) => {
 
     if(req.session.role == undefined)
         return res.redirect('/login/')
@@ -55,23 +53,22 @@ router.get('/studentsDetails', async(req, res) => {
 })
 
 
-router.get("/studentSettings", (req, res) => {
+router.get("/students/settings", (req, res) => {
     if (req.session.userId == undefined)
         return res.redirect('/login/')
     res.sendFile(path.join(__dirname, '../', '../', 'dist', 'studentProfile', 'index.html'))
 })
 
-router.get("/student/profile", async(req, res) => {
-    if (req.session.userId == undefined) {
+router.get("/students/profile", async(req, res) => {
+    if (req.session.userId == undefined) 
         return res.redirect('/login/')
-    }
 
     const studentData = await Student.findById(req.session.userId, '-__v -password -salt')
     .populate({path: 'recruitmentProcesses', select: '-appliedStudent -__v', populate: {path: 'job', select: '-recruitmentProcesses -__v'}}).exec()
     res.json(studentData)
 })
 
-router.put("/student/editData", async(req, res) => {
+router.put("/students", async(req, res) => {
     
     const userId = req.session.userId
 
@@ -97,16 +94,6 @@ router.put("/student/editData", async(req, res) => {
 
     Student.findByIdAndUpdate(userId, student).exec()
     res.send("done")
-})
-
-
-router.get('/studentsList', async(req, res) => {
-    if (req.session.userId == undefined)
-        return res.redirect('/login/')
-    if(req.session.role == 1)
-        return res.json({isUser: true})
-
-    res.json(await Student.find({}, '_id name'))
 })
 
 

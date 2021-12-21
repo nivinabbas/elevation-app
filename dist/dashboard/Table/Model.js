@@ -25,10 +25,7 @@ class StudentModel {
       5: 'Employeed'
     }
 
-
-    $.get('/studentsDetails')
-
-    this.students = (await $.get('/studentsDetails')).map(o => {
+    this.students = (await $.get('/students')).map(o => {
       o.recruitmentProcesses.forEach(p => p.stage = STAGES[p.stage])
       o.currentStatus = o.currentStatus ? STAGES[o.currentStatus] : STAGES[0]
       o.processNum = o.recruitmentProcesses.length

@@ -5,7 +5,7 @@ class dataOfCards {
   }
 
   getDataFromDB = async function () {
-    this.dataOfCards = await $.get(`http://localhost:8888/dataOfCards/`);
+    this.dataOfCards = await $.get(`http://localhost:8888/statistics/`);
   };
 
   saveDataOfProcess(process) {
